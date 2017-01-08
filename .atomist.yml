@@ -1,0 +1,13 @@
+---
+kind: "operation"
+client: "rug-cli 0.19.1"
+editor:
+  name: "atomist-rugs.common-editors.AddScalaMavenGitIgnore"
+  group: "atomist-rugs"
+  artifact: "common-editors"
+  version: "0.7.0"
+  origin:
+    repo: "atomist-rugs/common-editors.git"
+    branch: "master"
+    sha: "622ed10"
+

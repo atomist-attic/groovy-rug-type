@@ -59,16 +59,12 @@ class GroovySourceTypeTest extends FlatSpec with BeforeAndAfter {
 
     groovyType.findAllIn(mockMutableView) match {
 
-      case Some(groovyMutableViews) => groovyMutableViews foreach (view => {
-        view match {
+      case Some(groovyMutableViews) => groovyMutableViews foreach {
 
-          case a: GroovySourceMutableView => //this is good
-          case _ => assertThat(true, equalTo(false))
-        }
-      })
+        case a: GroovySourceMutableView => //this is good
+        case _ => assertThat(true, equalTo(false))
+      }
       case None => assertThat(true, equalTo(false))
     }
   }
-
-
 }

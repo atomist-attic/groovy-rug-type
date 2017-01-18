@@ -2,7 +2,7 @@ buildscript {
 
     ext {
 
-        rug_version = '0.8.0'
+        rug_version = '0.10.0'
     }
 }
 
@@ -19,9 +19,7 @@ repositories {
 
     mavenCentral()
 
-    maven { url 'https://sforzando.artifactoryonline.com/sforzando/libs-release' }
     maven { url 'https://atomist.jfrog.io/atomist/libs-release' }
-    maven { url 'https://sforzando.artifactoryonline.com/sforzando/libs-snapshot' }
     maven { url 'https://atomist.jfrog.io/atomist/libs-release-local' }
 }
 

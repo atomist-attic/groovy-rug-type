@@ -3,6 +3,8 @@
 git.properties
 provenance.properties
 
+build
+
 *.class
 *.log
 
@@ -59,3 +61,5 @@ atlassian-ide-plugin.xml
 com_crashlytics_export_strings.xml
 crashlytics.properties
 crashlytics-build.properties
+
+.gradle

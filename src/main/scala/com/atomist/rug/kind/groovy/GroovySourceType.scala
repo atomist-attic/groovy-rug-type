@@ -8,9 +8,6 @@ import com.atomist.rug.runtime.rugdsl.Evaluator
 import com.atomist.rug.spi.{MutableView, ReflectivelyTypedType, Type}
 import com.atomist.source.ArtifactSource
 
-/**
-  * Created by justin on 1/13/17.
-  */
 class GroovySourceType(
                   evaluator: Evaluator
                 )
@@ -18,17 +15,14 @@ class GroovySourceType(
     with ContextlessViewFinder
     with ReflectivelyTypedType {
 
-  // TODO: correctly assign manifest type, temporarily set to String to compile
-  override def viewManifest: Manifest[_] = manifest[String]
+  override def viewManifest: Manifest[_] = manifest[GroovySourceMutableView]
 
   override type Self = this.type
 
-  // TODO: correctly initialize this, temporarily set to get compile working
-  override def resolvesFromNodeTypes: Set[String] = Set("replace", "me")
+  override def resolvesFromNodeTypes: Set[String] = Set("project")
 
   override def description: String = "Groovy source file"
 
-  //TODO: correctly implement this, temporary stup implmentation to get compile working
   override protected def findAllIn(rugAs: ArtifactSource, selected: Selected, context: MutableView[_],
                                    poa: ProjectOperationArguments, identifierMap: Map[String,
     Object]): Option[Seq[MutableView[_]]] = {

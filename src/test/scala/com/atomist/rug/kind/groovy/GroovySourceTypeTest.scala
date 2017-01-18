@@ -1,6 +1,5 @@
 package com.atomist.rug.kind.groovy
 
-
 import com.atomist.rug.kind.core.ProjectMutableView
 import com.atomist.rug.runtime.rugdsl.Evaluator
 import com.atomist.source.{FileArtifact, StringFileArtifact}
@@ -10,9 +9,6 @@ import org.hamcrest.MatcherAssert._
 import org.mockito.Mockito._
 import org.scalatest.{BeforeAndAfter, FlatSpec}
 
-/**
-  * Created by justin on 1/13/17.
-  */
 class GroovySourceTypeTest extends FlatSpec with BeforeAndAfter {
 
   var mockEvaluator: Evaluator = _

@@ -13,3 +13,12 @@ Need Help?  [Join our Slack team][slack].
 
 [atomist]: https://www.atomist.com/
 [slack]: https://join.atomist.com/
+
+# Contributing
+
+Clone repository and run
+
+```bash
+./gradlew clean test
+```
+

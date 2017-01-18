@@ -1,6 +1,7 @@
 package com.atomist.rug.kind.groovy
 
 import com.atomist.project.ProjectOperationArguments
+import com.atomist.rug.kind.core.ProjectMutableView
 import com.atomist.rug.kind.dynamic.ContextlessViewFinder
 import com.atomist.rug.parser.Selected
 import com.atomist.rug.runtime.rugdsl.Evaluator
@@ -10,7 +11,7 @@ import com.atomist.source.ArtifactSource
 /**
   * Created by justin on 1/13/17.
   */
-class GroovyType(
+class GroovySourceType(
                   evaluator: Evaluator
                 )
   extends Type(evaluator)
@@ -32,6 +33,13 @@ class GroovyType(
                                    poa: ProjectOperationArguments, identifierMap: Map[String,
     Object]): Option[Seq[MutableView[_]]] = {
 
-    Some(Seq())
+    context match {
+      case pmv: ProjectMutableView =>
+        Some(pmv.currentBackingObject.allFiles
+          .filter(f => f.name endsWith ".groovy")
+          .map(f => new GroovySourceMutableView(f, pmv))
+        )
+      case _ => None
+    }
   }
 }

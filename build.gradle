@@ -8,6 +8,11 @@ buildscript {
 
 apply plugin: 'scala'
 
+ScalaCompileOptions.metaClass.daemonServer = true
+ScalaCompileOptions.metaClass.fork = true
+ScalaCompileOptions.metaClass.useAnt = false
+ScalaCompileOptions.metaClass.useCompileDaemon = false
+
 sourceCompatibility = 1.8
 
 repositories {

@@ -2,14 +2,14 @@ package com.atomist.rug.kind.groovy
 
 import com.atomist.rug.kind.core.ProjectMutableView
 import com.atomist.rug.runtime.rugdsl.Evaluator
-import com.atomist.source.{FileArtifact, StringFileArtifact}
 import com.atomist.source.file.FileSystemArtifactSource
-import org.hamcrest.CoreMatchers._
-import org.hamcrest.MatcherAssert._
+import com.atomist.source.{FileArtifact, StringFileArtifact}
 import org.mockito.Mockito._
-import org.scalatest.{BeforeAndAfter, FlatSpec}
+import org.scalatest.{BeforeAndAfter, FlatSpec, Matchers}
 
-class GroovySourceTypeTest extends FlatSpec with BeforeAndAfter {
+class GroovySourceTypeTest extends FlatSpec
+  with BeforeAndAfter
+  with Matchers {
 
   var mockEvaluator: Evaluator = _
   var mockMutableView: ProjectMutableView = _
@@ -39,14 +39,14 @@ class GroovySourceTypeTest extends FlatSpec with BeforeAndAfter {
     val expected = "Groovy source file"
     val groovyTypeDesc = groovyType.description
 
-    assertThat(groovyTypeDesc, equalTo(expected))
+    groovyTypeDesc should equal(expected)
   }
 
   it should "find all groovy source files within a ProjectMutableView" in {
 
     groovyType.findAllIn(mockMutableView) match {
 
-      case Some(groovyMutableViews) => assertThat(groovyMutableViews.length, equalTo(2))
+      case Some(groovyMutableViews) => groovyMutableViews.length should be(2)
       case None => fail()
     }
   }
@@ -55,12 +55,11 @@ class GroovySourceTypeTest extends FlatSpec with BeforeAndAfter {
 
     groovyType.findAllIn(mockMutableView) match {
 
-      case Some(groovyMutableViews) => groovyMutableViews foreach {
+      case Some(groovyMutableViews) => groovyMutableViews foreach { view =>
 
-        case a: GroovySourceMutableView => //this is good
-        case _ => assertThat(true, equalTo(false))
+        view shouldBe a[GroovySourceMutableView]
       }
-      case None => assertThat(true, equalTo(false))
+      case None => true should not be false
     }
   }
 }

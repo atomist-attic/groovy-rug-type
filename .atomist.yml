@@ -11,3 +11,16 @@ editor:
     branch: "master"
     sha: "622ed10"
 
+---
+kind: "operation"
+client: "rug-cli 0.21.1"
+editor:
+  name: "UpdateTravisMaven"
+  group: "atomist-rugs"
+  artifact: "travis-editors"
+  version: "0.8.0"
+  origin:
+    repo: "https://github.com/atomist-rugs/travis-editors.git"
+    branch: "master"
+    sha: "c545d0a"
+

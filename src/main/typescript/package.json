@@ -1,0 +1,27 @@
+{
+  "name": "@atomist/groovy",
+  "version": "${project.version}",
+  "description": "TypeScript model for Atomist Groovy Type",
+  "keywords": [
+    "Atomist",
+    "Rug",
+    "Groovy"
+  ],
+  "author": "Atomist, Inc",
+  "license": "Apache-2.0",
+  "atomist" : {
+    "group": "com.atomist",
+    "artifact": "groovy-rug-type"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/atomist-rugs/groovy-rug-type.git"
+  },
+  "bugs": {
+    "url": "https://github.com/atomist-rugs/groovy-rug-type/issues"
+  },
+  "homepage": "https://github.com/atomist-rugs/groovy-rug-type#readme",
+  "dependencies": {
+    "@atomist/rug": "${rug.version}"
+  }
+}

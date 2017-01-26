@@ -34,7 +34,7 @@ class GroovySourceTypeTest extends FlatSpec
     when(mockMutableView.currentBackingObject).thenReturn(mockArtifactSource)
   }
 
-  "A GroovySourceType" should "describe itself accurately as \'Groovy source file\'" in {
+  "A GroovySourceType" should "describe itself as a \'Groovy source file\'" in {
 
     val expected = "Groovy source file"
     val groovyTypeDesc = groovyType.description
@@ -59,7 +59,7 @@ class GroovySourceTypeTest extends FlatSpec
 
         view shouldBe a[GroovySourceMutableView]
       }
-      case None => true should not be false
+      case None => fail()
     }
   }
 }

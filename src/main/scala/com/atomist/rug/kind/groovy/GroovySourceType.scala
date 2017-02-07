@@ -3,10 +3,12 @@ package com.atomist.rug.kind.groovy
 import com.atomist.project.ProjectOperationArguments
 import com.atomist.rug.kind.core.ProjectMutableView
 import com.atomist.rug.kind.dynamic.ContextlessViewFinder
+import com.atomist.rug.kind.pom.PomMutableView
 import com.atomist.rug.parser.Selected
 import com.atomist.rug.runtime.rugdsl.Evaluator
 import com.atomist.rug.spi.{MutableView, ReflectivelyTypedType, Type}
 import com.atomist.source.ArtifactSource
+import com.atomist.tree.TreeNode
 
 class GroovySourceType(
                   evaluator: Evaluator
@@ -23,10 +25,11 @@ class GroovySourceType(
 
   override def description: String = "Groovy source file"
 
-  override protected def findAllIn(rugAs: ArtifactSource, selected: Selected, context: MutableView[_],
-                                   poa: ProjectOperationArguments, identifierMap: Map[String,
-    Object]): Option[Seq[MutableView[_]]] = {
-
+  override protected def findAllIn(rugAs: ArtifactSource,
+                                   selected: Selected,
+                                   context: TreeNode,
+                                   poa: ProjectOperationArguments,
+                                   identifierMap: Map[String, Object]): Option[Seq[MutableView[_]]] = {
     context match {
       case pmv: ProjectMutableView =>
         Some(pmv.currentBackingObject.allFiles
@@ -36,4 +39,5 @@ class GroovySourceType(
       case _ => None
     }
   }
+
 }
